@@ -2,15 +2,13 @@
 
 const isHappy = function(n){
     // add all previous instances of n into an array, so that we can see what an endless loop actually looks like
-    let arr = []
     while (true){
         if(n===1){
             return true
         }
-        if(arr.includes(n)){
+        if(n > 1 && n <= 4){
             return false
         }
-        arr.push(n)
         n = getSquares(n)
     }
 }
