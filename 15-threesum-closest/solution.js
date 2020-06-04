@@ -6,14 +6,16 @@ var threeSumClosest = function(arr, target) {
     // we will have to determine all possible combinations of 3 for the nums provided. along the way, track which is closest to the target, and only reset the sum variable if the distance to the target is less than the previously set minimum
         
     //     now how to determine all possible combinations of an array 🤣  r/restOfTheOwl
-        for(let i=0;i<arr.length-3;i++){
-            //i think we'll need a second pointer to move through the rest of the array, checking the first element against the remaining ones
+        for(let i=0;i<arr.length-2;i++){
+            //first pointer starts at the beginning of the array, stops 3 from the end
             let j = i+1;
             let starter = arr[i]
-            while(j<arr.length-2){
+            while(j<arr.length-1){
+                //second pointer starts one further than the first, stops 2 from the end
                 let k = j+1
                 let second = arr[j]
-                while(k<arr.length-1){
+                while(k<arr.length){
+                    // third pointer starts 2 further than the first, stops at the end
                     let total = starter + second + arr[k]
                     //if we hit it, return it!
                     if(total === target){return target}
