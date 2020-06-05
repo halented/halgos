@@ -16,8 +16,7 @@ var convert = function(str, numRows) {
     let rowCounter = 0
     for(let i=0;i<str.length;i++){
 // we need a way to determine if we are zigging or zagging -- for instance, on the first four characters, we should just put them in the same column (index) for each array in the matrix. but at that point (when i is a multiple of 4) we begin zagging (the iteration which starts at retArr.length-2 and continues Math.floor(numRows/2) times). 
-cl("running")
-cl(rowCounter)
+        cl(zig)
         if(zig){
             // move through column(index) starting with 0
             retArr[rowCounter].push(str[i])
@@ -25,27 +24,26 @@ cl(rowCounter)
         }
         else if (!zig){
             // do zag work
-            retArr[columnCounter].push(str[i])
-            columnCounter -= 1
+            retArr[rowCounter].push(str[i])
+            rowCounter -= 1
         }
 
-        if(i != 0 && i-1%numRows === 0 && zig === true){
+        if(i != 0 && (i+1)%numRows === 0 && zig === true){
             // if i is a multiple of numRows, we should switch between zigging and zagging
+            // on the first iteration, it's important to do i+1 (why is that the case? because we've yet to introduce the jump, or the zag. once that's in, the cadence changes.), but on later iterations, all we need is to check if i is a multiple
             zig = false
-            columnCounter = retArr.length-2
-            cl(retArr.length-2)
+            rowCounter = retArr.length-2
         }
-        else if(i != 0 && i%(Math.floor(numRows/2)) && zig === false){
+        // i != 0 && i-1%(Math.floor(numRows/2)) === 0 && 
+        else if(zig === false){
             zig = true
             rowCounter = 0
         }
-        
-
     }
     
     cl(retArr)
     // at the end, flatten and join return array
-    // return retArr.flat(1).join("")
+    return retArr.join("")
 };
 
 cl(convert("PAYPALISHIRING", 3))
