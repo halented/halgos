@@ -1,6 +1,6 @@
 # Reverse Integer
 
-Given a 32-bit signed integer, reverse and return its digits
+Given a 32-bit signed integer, reverse and return its digits.
 
 ## Examples
 
