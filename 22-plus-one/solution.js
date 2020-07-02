@@ -23,3 +23,17 @@ var plusOne = function(digits) {
     //     eh?
     return digits
 };
+// REFACTORED
+
+var plusOneTwo = () => {
+    if(arr.length===1 && arr[0]<9){return [arr[0]+1]}
+        
+    for(let i = arr.length-1; i>=0;i--){
+        let num = arr[i]
+        num === 9 ? arr[i] = 0 : arr[i] = num+1
+        if(arr[i] != 0){
+            return arr
+        }
+    }
+    return [1, ...arr]
+}
