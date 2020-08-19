@@ -1,3 +1,4 @@
+
 var isValid = function(s) {
     let dictionary = {"(":")", "{":"}", "[":"]"};
     let stack = [];
@@ -19,6 +20,15 @@ var isValid = function(s) {
             }
         }
     }
-    
     return stack.length === 0
 };
+
+// valid set
+// stack - 1. ["}"]
+// current - 1. "{"  2. "}"
+// match - 1. n/a. 2. "}"
+
+// an invalid set
+// stack - 1. "}" 2."}"
+// current - 1. "{" 2. "]"
+// match - 1. n/a. 2. "}"
