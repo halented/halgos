@@ -5,9 +5,7 @@ function findFraud(arr){
     let counter = 0
 
     for(let i=0;i<arr.length; i++){
-        let current = arr[i].split(",")
-        let location = current[1]
-        let amount = current[2]
+        const [id, location, amount] = arr[i].split(",")
         if(holder["loc"] === location && holder["amount"] === amount){
             counter += 1
             if(counter === 3){
