@@ -23,8 +23,8 @@ function reverseInPlace(str) {
 }
 
 function reverseAlphanumeric(str) {
-    // make it an array. iterate thru, form a new array with all the alphanumeric characters (replacing them with null in the original array). reverese the alphanumeric array, and then fill in the blank spots of the original array with the reversed characters from the new array.
-    // fill arr with alphanum chars, remove those from a separate array
+
+    // fill arr with alphanum chars, form a second array called "gutted" which has only special characters (maintaining their index)
     let arr = []
     let gutted = str.split("").map(x => {
         if (x.match(/^[a-zA-Z0-9]*$/)) {
@@ -46,7 +46,7 @@ function reverseAlphanumeric(str) {
         arr[position] = char
     }
 
-    // now we have a gutted array and an array full of reversed characters
+    // now we have a gutted array and an array full of reversed characters. replace any "null" value in the gutted array with chars from the reversed array
     for (let i = 0; i < gutted.length; i++) {
         if (gutted[i] === null){
             gutted[i] = arr.shift()
