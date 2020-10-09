@@ -1,7 +1,7 @@
 let frequency = (str) => {
     let hashy = {}
-    for(let i=0; i<str.length; i++){
-        if(hashy[str[i]]){
+    for (let i = 0; i < str.length; i++) {
+        if (hashy[str[i]]) {
             hashy[str[i]] += 1
         }
         else {
@@ -17,8 +17,8 @@ let frequency = (str) => {
 // frequency("akjsdfglksjdhfivlsundjflk")
 
 showCounter = () => {
-    return setTimeout(()=>{
-      console.log("yolo")
+    return setTimeout(() => {
+        console.log("yolo")
     }, 1000)
 }
 
