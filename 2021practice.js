@@ -13,7 +13,7 @@
 // Print YES if they can land on the same location at the same time; motherwise, print NO.
 
 // Test cases
-console.log(kangaroo(0, 3, 4, 2)) 
+// console.log(kangaroo(0, 3, 4, 2)) 
 // => YES
 // kangaroo(1,1,0,2)
 // => YES
@@ -27,7 +27,7 @@ function kangaroo(kang1, vel1, kang2, vel2) {
     // if we exit the while loop, return NO. 
 
     // if the kangs are at the same spot, we're already done
-    if(kang1 === kang2){
+    if (kang1 === kang2) {
         return "YES"
     }
 
@@ -51,16 +51,47 @@ function kangaroo(kang1, vel1, kang2, vel2) {
     }
 
     // if the one that's behind is going slower, don't try the while loop
-    if(trailVel <= leadVel){
+    if (trailVel <= leadVel) {
         return "NO"
     }
 
-    while (trailing <= leading){
-        if(trailing === leading){
+    while (trailing <= leading) {
+        if (trailing === leading) {
             return "YES"
         }
         trailing += trailVel
         leading += leadVel
     }
     return "NO"
+}
+
+// Find the Next Greatest Number in an array
+
+// - You are given an array. For each element, print out that element and the next number in the array which is greater than it.
+
+// - If there is no element greater, print -1.
+
+// nextGreatest([4, 3, 5])
+// nextGreatest([51, 13, 5, 4, 9, 23])
+// =>  {4:5, 3:5, 5:-1}
+
+function nextGreatest(arr) {
+    // start a for loop i think would be easiest. put a pointer where we are, and a pointer at the next place. do a lil while loop while the leading pointer still doesnt point to anything higher than our trailing pointer.
+
+    let results = {}
+
+    for (let i = 0; i < arr.length; i++) {
+        let j = i + 1
+        while (j < arr.length) {
+            if (arr[j] > arr[i]) {
+                results[arr[i]] = arr[j]
+                break
+            }
+            j++
+        }
+        if (j === arr.length) {
+            results[arr[i]] = -1
+        }
+    }
+    console.log(results)
 }
