@@ -95,3 +95,39 @@ function nextGreatest(arr) {
     }
     console.log(results)
 }
+
+// Find the Nth Fibonacci Number
+
+// Given a number *n*, return the related Fibonacci number. Assume that 0 is the 0th number in the fib sequence, and count up from there. 1 would be the first number, 1 would be the second number, 2 the third, and 3 the fourth.
+
+// fib(0)  # => 0
+// fib(1)  # => 1
+// fib(2)  # => 1
+// fib(3)  # => 2
+// fib(4)  # => 3
+
+// Source:
+
+// [Interview Cake](https://www.interviewcake.com/question/ruby/nth-fibonacci)
+
+// [Fibo Info](https://en.wikipedia.org/wiki/Fibonacci_number)
+// each number is the sum of the two preceding ones, starting from 0 and 1
+
+function fib(numOfSequences) {
+    // *numOfSequences* number of times, do the fibbonacci thing, starting with 0 & 1.
+    if (!numOfSequences) { return 0 }
+    let recursionCount = 1
+    function helper(val1, val2) {
+        if (numOfSequences === recursionCount) {
+            return val2
+        }
+        else {
+            const val3 = val1 + val2
+            recursionCount++
+            return helper(val2, val3)
+        }
+    }
+    return helper(0, 1)
+}
+
+console.log(fib(4)) 
