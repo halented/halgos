@@ -130,4 +130,19 @@ function fib(numOfSequences) {
     return helper(0, 1)
 }
 
-console.log(fib(4)) 
+// Varied Anagram Maker
+
+// - Given a string, return an anagram of the string. 
+// - The function, given the same string, should generate a different anagram each time (results may be repeated by chance)
+
+function anagram(str) {
+    // make an array by randomly popping characters out of the string until the length is zero
+    // join & return
+    let keeper = []
+    while (str.length > 0) {
+        let i = Math.floor(Math.random() * str.length)
+        keeper.push(str[i])
+        str = str.replace(str[i], "")
+    }
+    return keeper.join("")
+}
