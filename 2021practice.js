@@ -146,3 +146,89 @@ function anagram(str) {
     }
     return keeper.join("")
 }
+
+// Find Intersection of Arrays
+
+// - Given two arrays, write a function to compute their intersection. 
+
+// ## Examples
+
+// ```javascript
+//     intersect([1,2,2,1],[2,2])
+//         => [2,2]
+//     intersect([4,9,5],[9,4,9,8,4])
+//         => [4,9]
+// ```
+
+// ## Constraints
+// - Each element in the result should appear as many times as it shows in both arrays.
+// - The result can be in any order.
+
+const crossSection = (one, two) => {
+    // first thought: an inefficient way of solving this would be to find the shorter array, start iterating through it, and for each number, iterate thru the longer one to see if it's in there. if so, start incrementing both counters by one, collecting the results into a return array until the two iterators no longer point to a matching character or number. then exit the loop & return the filled array. 
+    let shorter
+    let longer
+    let intersection = []
+    if (one.length > two.length) {
+        shorter = two
+        longer = one
+    } else {
+        shorter = one
+        longer = two
+    }
+    // this already sucks so bad because i think i doubled the amount of space being used, oh well for now
+    let shortCounter = 0
+    let longCounter = 0
+    while (shortCounter < shorter.length) {
+        while (longCounter < longer.length) {
+            let comparable = longer[longCounter]
+            let current = shorter[shortCounter]
+            console.log("does shortCounter get incremented? ", shortCounter)
+            if (current === comparable) {
+                intersection.push(current)
+                longCounter += 1
+                shortCounter += 1
+            } else {
+                longCounter += 1
+            }
+        }
+        shortCounter += 1
+    }
+    return intersection
+}
+
+// intersect([1, 2, 2, 1], [2, 2])
+
+
+// it appears i misunderstood the question. it's not where the numbers match up, it's how many numbers in common they share, regardless of location.
+
+const intersect = (one, two) => {
+    // sort both, then begin iterating through one of them til we find a matching number.
+    one = one.sort((a, b) => a - b)
+    two = two.sort((a, b) => a - b)
+    let rtrn = one.length > two.length ? helper(one, two) : helper(two, one)
+    return rtrn
+}
+
+const helper = (longer, shorter) => {
+    let i = 0
+    let j = 0
+    let rtrn = []
+    while (i < longer.length) {
+        if (longer[i] === shorter[j]) {
+            rtrn.push(longer[i])
+            j++
+            i++
+        }
+        else if(longer[i]> shorter[j]) {
+            j++
+        }
+        else {
+            i++
+        }
+    }
+    return rtrn
+}
+
+console.log(intersect([1, 2, 2, 1], [2, 2]))
+console.log(intersect([4, 9, 5], [9, 4, 9, 8, 4]))
