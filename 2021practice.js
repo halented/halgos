@@ -245,3 +245,24 @@ const findSingle = (arr) => {
     return arr[i]
 }
 console.log(findSingle([1,1,2,2,3,3,4,5,5,6,6]))
+
+// find longest common prefix
+var longestCommonPrefix = function(arr) {
+    // not sure if this counts as quadratic time because we're iterating through the array comp.length amount of times. which isn't....exponential 
+    if (!arr[0]) { return "" }
+    let prefix = ''
+    let comp = arr.shift()
+    for(let i=0;i<comp.length;i++){
+        let currentChar = comp[i]
+        for(let j=0;j<arr.length;j++){
+            if(currentChar !== arr[j][i]){
+                return prefix
+            }
+        }
+        prefix += currentChar
+    }
+    return prefix
+}
+
+longestCommonPrefix(["flower", "flow", "floyd"])
+//  => "flo"
