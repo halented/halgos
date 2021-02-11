@@ -33,6 +33,7 @@ const twoPass = (s, c) => {
     let answ = []
     // find first instance of c
     let closest = s.indexOf(c)
+    let leng = closest
     // first pass, looks just like the above but without checking for current closest.
     for (let i = 0; i < s.length; i++) {
         // check which index we should be using
@@ -42,7 +43,7 @@ const twoPass = (s, c) => {
         answ.push(Math.abs(i - closest))
     }
     // second pass, same idea but we check if the number we already logged is greater than the one we're calculating this go around. conveniently, closest should be set to the last instance of c at this point.
-    for (let i = closest; i > s.indexOf(c); i--) {
+    for (let i = closest; i > leng; i--) {
         if (s[i] === c) {
             closest = i
         }

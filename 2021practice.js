@@ -220,7 +220,7 @@ const helper = (longer, shorter) => {
             j++
             i++
         }
-        else if(longer[i]> shorter[j]) {
+        else if (longer[i] > shorter[j]) {
             j++
         }
         else {
@@ -230,5 +230,18 @@ const helper = (longer, shorter) => {
     return rtrn
 }
 
-console.log(intersect([1, 2, 2, 1], [2, 2]))
-console.log(intersect([4, 9, 5], [9, 4, 9, 8, 4]))
+// console.log(intersect([1, 2, 2, 1], [2, 2]))
+// console.log(intersect([4, 9, 5], [9, 4, 9, 8, 4]))
+
+// Given an array of non-negative integers return the number which appears just once. All other numbers will appear twice. 
+
+const findSingle = (arr) => {
+    // O log N
+    arr = arr.sort((a, b) => a - b)
+    let i = 0
+    while(arr[i]===arr[i+1]){
+        i += 2
+    }
+    return arr[i]
+}
+console.log(findSingle([1,1,2,2,3,3,4,5,5,6,6]))
