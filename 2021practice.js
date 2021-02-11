@@ -239,23 +239,23 @@ const findSingle = (arr) => {
     // O log N
     arr = arr.sort((a, b) => a - b)
     let i = 0
-    while(arr[i]===arr[i+1]){
+    while (arr[i] === arr[i + 1]) {
         i += 2
     }
     return arr[i]
 }
-console.log(findSingle([1,1,2,2,3,3,4,5,5,6,6]))
+console.log(findSingle([1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6]))
 
 // find longest common prefix
-var longestCommonPrefix = function(arr) {
+var longestCommonPrefix = function (arr) {
     // not sure if this counts as quadratic time because we're iterating through the array comp.length amount of times. which isn't....exponential 
     if (!arr[0]) { return "" }
     let prefix = ''
     let comp = arr.shift()
-    for(let i=0;i<comp.length;i++){
+    for (let i = 0; i < comp.length; i++) {
         let currentChar = comp[i]
-        for(let j=0;j<arr.length;j++){
-            if(currentChar !== arr[j][i]){
+        for (let j = 0; j < arr.length; j++) {
+            if (currentChar !== arr[j][i]) {
                 return prefix
             }
         }
@@ -266,3 +266,20 @@ var longestCommonPrefix = function(arr) {
 
 longestCommonPrefix(["flower", "flow", "floyd"])
 //  => "flo"
+
+// make change
+
+
+const makeChange = (amnt) => {
+    // assuming the amount is given in cents -- if it were given in dollars, would just have to multiple the amount by 100 and do the same thing.
+    let q = Math.floor(amnt / 25)
+    amnt = amnt - (q * 25)
+    let d = Math.floor(amnt / 10)
+    amnt = amnt - (d * 10)
+    let n = Math.floor(amnt / 5)
+    amnt = amnt - (n * 5)
+    return { q, d, n, p: amnt }
+}
+
+console.log(makeChange(116))
+
