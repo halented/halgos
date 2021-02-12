@@ -244,7 +244,7 @@ const findSingle = (arr) => {
     }
     return arr[i]
 }
-console.log(findSingle([1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6]))
+// console.log(findSingle([1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6]))
 
 // find longest common prefix
 var longestCommonPrefix = function (arr) {
@@ -281,5 +281,28 @@ const makeChange = (amnt) => {
     return { q, d, n, p: amnt }
 }
 
-console.log(makeChange(116))
+// console.log(makeChange(116))
 
+// Given a number *n*, determine if the number is "happy". For the purposes of this prompt, "happy" is defined by the following process:
+
+// Starting with any positive integer *n*, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (at which it will stay) or until it loops endlessly in a cycle which does not include 1. The numbers for which the process ends in 1 are happy numbers. 
+
+const happyNum = (num) => {
+    let sums = { num: true }
+    while (num !== 1) {
+        let tempTotal = 0
+        while (num > 0) {
+            tempTotal += (num % 10) * (num % 10)
+            num = Math.floor(num / 10)
+        }
+        if (sums[tempTotal]) {
+            return false
+        }
+        sums[tempTotal] = true
+        num = tempTotal
+    }
+    return true
+}
+
+console.log(happyNum(19))
+// => true

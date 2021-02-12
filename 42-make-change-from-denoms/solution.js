@@ -21,7 +21,7 @@ const makeChangeWithDenoms = (amount, denoms) => {
         }
         // check denoms below our current one.
         for (let j = i - 1; j >= 0; j--) {
-            // subtract increasing multiplications of our current denom until we're at 0'
+            // subtract increasing multiplications of our current denom until we're at 0
             let tempAmount = amount - denoms[i]
             while (tempAmount > 0) {
                 if (tempAmount % denoms[j] === 0) {
