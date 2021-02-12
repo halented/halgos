@@ -288,7 +288,8 @@ const makeChange = (amnt) => {
 // Starting with any positive integer *n*, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (at which it will stay) or until it loops endlessly in a cycle which does not include 1. The numbers for which the process ends in 1 are happy numbers. 
 
 const happyNum = (num) => {
-    let sums = { num: true }
+    let sums = { [num]: true }
+    console.log(sums)
     while (num !== 1) {
         let tempTotal = 0
         while (num > 0) {
