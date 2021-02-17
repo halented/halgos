@@ -364,6 +364,6 @@ const romanToInt = (roman) => {
 // romanToInt("IV")
 // romanToInt("IX")
 // => 9
-// romanToInt("LVIII")
+romanToInt("LVIII")
 // => 58
-// romanToInt("MCMXCIV")
+romanToInt("MCMXCIV")
