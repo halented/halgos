@@ -289,7 +289,6 @@ const makeChange = (amnt) => {
 
 const happyNum = (num) => {
     let sums = { [num]: true }
-    console.log(sums)
     while (num !== 1) {
         let tempTotal = 0
         while (num > 0) {
@@ -305,5 +304,66 @@ const happyNum = (num) => {
     return true
 }
 
-console.log(happyNum(19))
+// console.log(happyNum(19))
 // => true
+
+// convert roman numeral to an integer
+// I can be placed before V (5) and X (10) to make 4 and 9. 
+// X can be placed before L (50) and C (100) to make 40 and 90. 
+// C can be placed before D (500) and M (1000) to make 400 and 900.
+// romanToInt("III")
+// => 3
+// romanToInt("IV")
+// => 4
+// romanToInt("IX")
+// => 9
+// romanToInt("LVIII")
+// => 58
+// romanToInt("MCMXCIV")
+// => 1994
+
+const romanToInt = (roman) => {
+    const dict = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000
+    }
+    // iterate through roman with two pointers, one goes forward to check if the next letter is "higher" than the one we are on. if not, add the one we are on to the total, and move both pointers forward one.
+    let i = 0
+    let total = 0
+    while (i < roman.length) {
+        let j = i + 1
+        if (roman[j] === 'I') {
+            // if the next character is I, iterate up to three times to find out how many I's to add to our current character, add the total to our running total, and increment i by however many iterations you did plus one. 
+            while (roman[j] === 'I') {
+                total += 1
+                j++
+            }
+            total += dict[roman[i]]
+            i += (j - i + 1)
+        }
+        else if (dict[roman[j]] <= dict[roman[i]]) {
+            // if the next character is higher OR a character is repeated, we know these don't interact, so add the conversion to the total and increment i by one
+            total += dict[roman[i]]
+            i++
+        }
+        else if (roman[i] === "I" || roman[i] === "X" || roman[i] === "C") {
+            // if it's one of the characters that can be subtracted, do so and then add the amount to the total and then increase i by two
+            total += (dict[roman[j]] - dict[roman[i]])
+            i += 2
+        }
+
+    }
+    console.log(total)
+}
+// romanToInt("III")
+// romanToInt("IV")
+// romanToInt("IX")
+// => 9
+// romanToInt("LVIII")
+// => 58
+// romanToInt("MCMXCIV")
