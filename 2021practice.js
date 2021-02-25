@@ -364,6 +364,74 @@ const romanToInt = (roman) => {
 // romanToInt("IV")
 // romanToInt("IX")
 // => 9
-romanToInt("LVIII")
+// romanToInt("LVIII")
 // => 58
-romanToInt("MCMXCIV")
+// romanToInt("MCMXCIV")
+
+// Given an array of integers and a traget, return the sum of the three integers which add up closest to the target. 
+
+const threesome = (arr, targ) => {
+    // iterative version: for each num arr[i], iterate through the array twice to check possible combinations of three. 
+    // track the closest distance along the way.
+    // this is beyond quadratic time
+    let closest = null
+
+    for (let i = 0; i < arr.length - 2; i++) {
+        let first = arr[i]
+        for (let j = i + 1; j < arr.length - 1; j++) {
+            let second = arr[j]
+            for (let k = j + 1; k < arr.length; k++) {
+                let total = first + second + arr[k]
+                if (Math.abs(targ - total) < Math.abs(targ - closest) || closest === null) {
+                    closest = total
+                }
+            }
+        }
+    }
+    return closest
+}
+
+var threeSumClosest = function (arr, target) {
+    //     gonna be returning an int, and need to keep track of the minimum distance to the target
+    let sum = 0
+    let minDist = false
+    // we will have to determine all possible combinations of 3 for the nums provided. along the way, track which is closest to the target, and only reset the sum variable if the distance to the target is less than the previously set minimum
+
+    //     now how to determine all possible combinations of an array 🤣  r/restOfTheOwl
+    for (let i = 0; i < arr.length - 2; i++) {
+        //first pointer starts at the beginning of the array, stops 3 from the end
+        let j = i + 1;
+        let starter = arr[i]
+        while (j < arr.length - 1) {
+            //second pointer starts one further than the first, stops 2 from the end
+            let k = j + 1
+            let second = arr[j]
+            while (k < arr.length) {
+                // third pointer starts 2 further than the first, stops at the end
+                let total = starter + second + arr[k]
+                //if we hit it, return it!
+                if (total === target) { return target }
+                let dist = Math.abs(target - total)
+
+                //at the end, check if this is the shortest distance so far
+                if (!minDist || minDist > dist) {
+                    minDist = dist;
+                    sum = total;
+                }
+                k++
+            }
+            j++
+        }
+    }
+    return sum
+};
+
+console.time('checker')
+console.log(threesome([-1, 0, 1, 2, -1, -4], 0))
+console.timeEnd('checker')
+
+console.time('chacker')
+console.log(threesome([-1, 0, 1, 2, -1, -4], 0))
+console.timeEnd('chacker')
+// the while loops, which are logistically doing the exact same thing, are **ten times faster** than the nested for loops
+
