@@ -20,22 +20,22 @@ var smallerNumsThanCurrent = function (nums) {
 // above solution is o(n)2
 
 // a fundamental problem with the approach below: hash keys are unique
-function alt(nums){
+function alt(nums) {
     // let indexSaver = {8:0, 1:1}
     // let countSaver = {8:1, 1:0}
     let countSaver = {}
     let indexSaver = {}
-    for(let i=0;i<nums.length;i++){
+    for (let i = 0; i < nums.length; i++) {
         let currentNum = nums[i]
         countSaver[currentNum] = 0
         indexSaver[currentNum] = i
     }
     nums.sort()
-    for(let i=0;i<nums.length;i++){
+    for (let i = 0; i < nums.length; i++) {
         let currentNum = nums[i]
         // if we have duplicates, keep iterating til we find something greater than the currentNum
         let j = i + 1
-        while(nums[j] === nums[i]){
+        while (nums[j] === nums[i]) {
             j++
         }
         countSaver[currentNum] += 1
@@ -43,6 +43,6 @@ function alt(nums){
     console.log(countSaver)
 }
 
-console.log(alt([8,1,2,2,3]))
+console.log(alt([8, 1, 2, 2, 3]))
 
 

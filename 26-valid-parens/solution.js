@@ -1,12 +1,12 @@
 
-var isValid = function(s) {
-    let dictionary = {"(":")", "{":"}", "[":"]"};
+var isValid = function (s) {
+    let dictionary = { "(": ")", "{": "}", "[": "]" };
     let stack = [];
     // s = "{]"
-    
-    for(let i=0;i<s.length;i++){
+
+    for (let i = 0; i < s.length; i++) {
         let current = s[i]
-        if(dictionary[current]){
+        if (dictionary[current]) {
             // put matching closure bracket into stack
             stack.push(dictionary[current])
             // stack now looks like this: ["}"]
@@ -15,7 +15,7 @@ var isValid = function(s) {
             // we have found a closing bracket
             let match = stack.pop()
             // match will be "}"
-            if(match != current){
+            if (match != current) {
                 return false
             }
         }

@@ -48,7 +48,7 @@ function reverseAlphanumeric(str) {
 
     // now we have a gutted array and an array full of reversed characters. replace any "null" value in the gutted array with chars from the reversed array
     for (let i = 0; i < gutted.length; i++) {
-        if (gutted[i] === null){
+        if (gutted[i] === null) {
             gutted[i] = arr.shift()
         }
     }

@@ -3,13 +3,13 @@ var jewelsAndStones = function (J, S) {
     //solution 2: a jewel hash
     let jewelHash = {}
     let count = 0
-    for(let i=0;i<J.length;i++){
+    for (let i = 0; i < J.length; i++) {
         let character = J[i]
         jewelHash[character] = "jewel"
     }
-    for(let i=0;i<S.length;i++){
+    for (let i = 0; i < S.length; i++) {
         let character = S[i]
-        if(jewelHash[character]){
+        if (jewelHash[character]) {
             count += 1
         }
     }

@@ -18,7 +18,7 @@ const doMath = (arr) => {
             nums = [res]
         }
         // if we collected any numbers, increment i by the amount of numbers collected. otherwise, we know it was a symbol, so just increment by 1.
-        i += j-i ? j-i : 1
+        i += j - i ? j - i : 1
     }
     return nums[0]
 }
