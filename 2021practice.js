@@ -426,12 +426,12 @@ var threeSumClosest = function (arr, target) {
     return sum
 };
 
-console.time('checker')
-console.log(threesome([-1, 0, 1, 2, -1, -4], 0))
-console.timeEnd('checker')
+// console.time('checker')
+// console.log(threesome([-1, 0, 1, 2, -1, -4], 0))
+// console.timeEnd('checker')
 
-console.time('chacker')
-console.log(threesome([-1, 0, 1, 2, -1, -4], 0))
-console.timeEnd('chacker')
+// console.time('chacker')
+// console.log(threesome([-1, 0, 1, 2, -1, -4], 0))
+// console.timeEnd('chacker')
 // the while loops, which are logistically doing the exact same thing, are **ten times faster** than the nested for loops
 
