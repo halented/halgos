@@ -2,10 +2,8 @@
 #   => 0,1,1,2,3,5,8,13
 
 def fib(n)
-    # we need three numbers: additive 1, additive 2, and current fibos
-    # hard coding the beginning, we have:
-    if n == 0
-        puts "invalid: no 0th fibonacci number"
+    if !(n.is_a? Numeric) || n <= 0
+        puts "invalid"
         return
     end
     if n == 1
@@ -46,8 +44,10 @@ fib(6)
 puts "SHOULD BE 8:"
 fib(7)
 
+fib('coats')
 
-# older
+
+# older, actually kinda broken regarding the 0th iteration, and doesn't acocunt for negative/invalid input
 # def fib(n)
 #     prev = 0
 #     current = 1
