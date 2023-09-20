@@ -7,4 +7,20 @@
 #round_grades({"jolie": 58, "nim": 71})
 #   => {"jolie": 60, "nim": 71}
 
-grades = {"tiff": 22, "shell": 61, "britt": 94, "barbara": 89, "talia": 78, "brionna": 83}
+grades = {"tiff": 22, "shell": 61, "britt": 94, "barbara": 89, "talia": 78, "brionna": 83, "nala": 82}
+
+def round_grades(student_hash)
+    new_h = student_hash.map do |key, value| 
+        mod_val = value % 5
+        if(value < 38 || mod_val < 3)
+            [key, value]
+        else
+            value = value + (5 - mod_val)
+            [key, value]
+        end
+    end.to_h
+
+    puts new_h
+end
+
+round_grades(grades)
