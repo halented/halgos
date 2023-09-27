@@ -1,18 +1,3 @@
-=begin
-Find the Next Greatest Number in an array
-
-- You are given an array. For each element, print out that element and the next number in the array which is greater than it.
-
-- If there is no element greater, print -1.
-
-Example: 
-```javascript
-nextGreatest([4,3,5])
- 
-=>  {4:5, 3:5, 5:-1}
-```
-=end
-
 def next_greatest_hash_n2(arr)
     # straight forward: iterate, for each element, iterate again. complexity n squared, so not ideal but we can put it down right quick. 
     solution = {}

@@ -5,5 +5,8 @@
         "other": "on"
     },
     "editor.tabCompletion": "on",
-    "emmet.showSuggestionsAsSnippets": true
+    "emmet.showSuggestionsAsSnippets": true,
+    "files.watcherExclude": {
+        "**/target": true
+    }
 }

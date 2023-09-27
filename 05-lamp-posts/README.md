@@ -1,7 +1,4 @@
 # Light Radius Problem
-
-### from katie/aspen
-
 ## Description
 
 You're given two inputs, an integer and an array. 
