@@ -16,7 +16,7 @@
  */
 
 function areStringsEqual(s, t) {
-    return !!(applyBackspaces(s) === applyBackspaces(t))
+    return applyBackspaces(s) === applyBackspaces(t)
 }
 
 /**
