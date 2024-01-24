@@ -13,3 +13,10 @@ function fibHelper(n, first, next = 1, counter = 1) {
   fibHelper(n, next, newb, counter)
 
 }
+
+/* fib(0)  # => 0
+fib(1)  # => 1
+fib(2)  # => 1
+fib(3)  # => 2
+fib(4)  # => 3
+*/
