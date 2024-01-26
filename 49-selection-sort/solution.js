@@ -35,5 +35,5 @@ const selectionSort = (arr, n) => {
     return arr;
 }
 
-console.log('actual output', selectionSort([1, 8, 4, 6, 3, 9, 2], 7));
 console.log('expected output: ', [1, 2, 3, 4, 6, 8, 9], '\n');
+console.log('actual output', selectionSort([1, 8, 4, 6, 3, 9, 2], 7));
