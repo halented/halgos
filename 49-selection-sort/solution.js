@@ -23,15 +23,15 @@ const selectionSort = (arr, n) => {
         let lowestValueIndex = j;
         for (j; j < n; j++) {
             if (arr[lowestValueIndex] > arr[j]) {
-                lowestValueIndex = j
+                lowestValueIndex = j;
             }
-        }
+        };
         if (arr[i] > arr[lowestValueIndex]) {
             swap(i, lowestValueIndex);
         }
         i++;
         j = i + 1;
-    }
+    };
     return arr;
 }
 
