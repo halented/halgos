@@ -53,3 +53,25 @@ const mergeSort = (arr) => {
     // then feed those into mergeSorts to get sliced. the return value of each merge sort should be an argument in a merging function which combines the two arrays
     return merge(mergeSort(left), mergeSort(right));
 }
+
+
+function printTillN(n) {
+    if (n === 1) {
+        console.log(n);
+        return n; //stop adding calls to the stack
+    }
+    printTillN(n - 1); //print number
+    console.log(n)
+    return n
+}
+
+printTillN(3);
+
+/** what's missing from this? i understand what it's doing: 
+ * check if n is one
+ * if it's not, subtract one and try again
+ * print one
+ * so it's doing all the iterations needed, the stack is built properly, but it is not returning the rest of the numbers because there's no case for returning them. 
+ * to fix this, need to add a case that will return n which only fires as we move back up the stack, and will not fire as we traverse down to one. 
+ *  
+ * */
