@@ -65,7 +65,7 @@ function printTillN(n) {
     return n
 }
 
-printTillN(3);
+// printTillN(3);
 
 /** what's missing from this? i understand what it's doing: 
  * check if n is one
@@ -75,3 +75,12 @@ printTillN(3);
  * to fix this, need to add a case that will return n which only fires as we move back up the stack, and will not fire as we traverse down to one. 
  *  
  * */
+
+const fib1 = (n) => {
+    if (n === 1) {
+        return n;
+    }
+    return fib(n - 1) + fib(n - 2);
+}
+
+console.log(fib1(5));
