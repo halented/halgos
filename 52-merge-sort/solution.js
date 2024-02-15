@@ -54,4 +54,4 @@ const merge = (left, right) => {
  * which means we revisit #4 again and actually enter the merge function, which immediately puts 
  * [3] into the array, then adds [3, [], [8]] (flattened to ) => [3,8]
  * merge returns [3,8] <4/>
- */
+*/
