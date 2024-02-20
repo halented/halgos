@@ -88,3 +88,26 @@ console.log('FINAL RESULT: ', determineOrder(validInput));
     so in this final one, e and r already exist. struggling because using only these two pieces of information, we let 'e' go to the front of the list, and we WANT to let everything else follow, but we would get [ 't', 'f', 'w', 'e', 'r'] with nothing to refute this, even though previously processed arrays give info about the location of t, f, w, e.
     i know thomas said that the first step of gathering all the first letters wasn't really necessary, but it would have stopped us from having this problem. 
  */
+
+    // below is a scraping function for some side thing just saving it here
+
+children.forEach(child => {
+    if (child && child.tagName === 'CODE' && child.dataset.class.startsWith('xx')) {
+        // if this is a valid CODE node, iterate through its children to look for a DIV node whose dataset tags end in xx
+        !!child.children.length && Array.from(child.children).forEach(grandChild => {
+            if (grandChild.tagName === 'DIV' && grandChild.dataset.tag.endsWith('xx')) {
+                // check its children for a span whose dataset ids include xx
+                !!grandChild.children.length && Array.from(grandChild.children).forEach(great => {
+                    if (great.tagName === 'SPAN' && great.dataset.id.includes('xx')) {
+                        !!great.children.length && Array.from(great.children).forEach(doubleGreat => {
+                            // i tag, class xx, value can be added to the string. 
+                            if (doubleGreat.tagName === 'I' && doubleGreat.className.includes('xx')) {
+                                str += doubleGreat.attributes.value.value
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    }
+})
