@@ -39,7 +39,7 @@ const generateNums = (x, y, z) => {
     while (i < x) {
         // generate a number
         let num = Math.floor(Math.random() * y)
-        // if it already exists in the hash or is 1, repeat step 1
+        // if it already exists in the hash or is z, repeat step 1
         while (nums[num] || num === z) {
             num = Math.floor(Math.random() * y)
         }
