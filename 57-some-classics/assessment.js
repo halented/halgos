@@ -25,76 +25,84 @@ function lEM(sprice) {
         let rightAvg = Math.floor(runningRightTotal / (sprice.length - (i + 1)));
         // console.log('left: ', leftAvg)
         // console.log('right: ', rightAvg)
-        
+
         let netChange = Math.abs(leftAvg - rightAvg);
         console.log(netChange);
-        if(netChange < lowestNetChange || !lowestNetChange) {
+        if (netChange < lowestNetChange || !lowestNetChange) {
             lowestNetChange = netChange;
             lowestMonth = i + 1;
         }
     }
-    
+
     return lowestMonth;
 }
 
 // should print 2 and 1.5
-lEM([1,2,3,4,5])
+// lEM([1,2,3,4,5])
 
-function fRIQ(wts) {
-    // wts is a list of max wait times for requests
-    // number of requests is wts.length
-    // a request is expired if time passed === wts[i] and we are not currently processing it HOWEVER, if time passed === wts[i] and we are now serving wts[i], it is processed.
-    // find the number of requests present in the queue at every second until it is empty.
-    // i'm guessing every iteration t increases by 1? so it's not actual seconds, but an iteration REPRESENTS a second?
-    // first thought is to make a dictionary containing all the wts times indexes with each key being the wts times themselves. we will index it at i + 1 to avoid the 0th index being a falsy value. we can use this to determine which indexes have a an expired wts time and remove them from the array. let's create that, and then i'll write out some steps for the request processing iteration itself. 
-    // let wtsDictionary = {}
-    // for(let i = 0; i<wts.length; i++){
-    //     // wtsDictionary[i+1] = wts[i];
-    //     if(wtsDictionary[wts[i]]) {
-    //         // if this wts time is already in the dictionary, go ahead and add this index into its array of request indexes
-    //         wtsDictionary[wts[i]].push(i)
-    //     }
-    //     else {
-    //         // otherwise add entry
-    //         wtsDictionary[wts[i]] = [i]
-    //     }
-    // }
-    // // request processing:
-    // /**
-    //  * 1. process current request. (shift array)
-    //  * 2. check dictionary for requests having a wts time of t or greater. shoot the dictionary needs to be different
-    //  */
-    // let t = 0;
-    // while(wts.length) {
-    //     console.log(wts.length)
-    //     wts.shift();
-    //     // problem: this changes the indexes
-    //     if(wtsDictionary[t]) {
-    //         // if the wts time exists in the dictionary, then we have a list of indexes. each index should be removed from the wts list.
-    //         wtsDictionary[t].forEach(index => {
-    //             wts.splice(index, 1);
-    //         })
-    //     }
-        
-    // }
-    for(let t = 0; t<wait.length; t++){
-        // process this request
-        console.log(wait.length)
-        wait.shift();
-        for(let i = 0; i<wait.length; i++){
-            // check for any expired requests
-            // console.log('checking if ', wait[i], ' should be removed')
-            if(wait[i] <= t+1) {
-                wait.splice(i, 1);
-                i--
-                // console.log('should see this on third iteration, we just removed something: ', wait)
-            }
-        }
-        t--
-        // console.log('for first iteration, 2 should be kept: ', wait)
-    }
-    console.log(wait)
-}
+// function fRIQ(wts) {
+// wts is a list of max wait times for requests
+// number of requests is wts.length
+// a request is expired if time passed === wts[i] and we are not currently processing it HOWEVER, if time passed === wts[i] and we are now serving wts[i], it is processed.
+// find the number of requests present in the queue at every second until it is empty.
+// i'm guessing every iteration t increases by 1? so it's not actual seconds, but an iteration REPRESENTS a second?
+// first thought is to make a dictionary containing all the wts times indexes with each key being the wts times themselves. we will index it at i + 1 to avoid the 0th index being a falsy value. we can use this to determine which indexes have a an expired wts time and remove them from the array. let's create that, and then i'll write out some steps for the request processing iteration itself. 
+// let wtsDictionary = {}
+// for(let i = 0; i<wts.length; i++){
+//     // wtsDictionary[i+1] = wts[i];
+//     if(wtsDictionary[wts[i]]) {
+//         // if this wts time is already in the dictionary, go ahead and add this index into its array of request indexes
+//         wtsDictionary[wts[i]].push(i)
+//     }
+//     else {
+//         // otherwise add entry
+//         wtsDictionary[wts[i]] = [i]
+//     }
+// }
+// // request processing:
+// /**
+//  * 1. process current request. (shift array)
+//  * 2. check dictionary for requests having a wts time of t or greater. shoot the dictionary needs to be different
+//  */
+// let t = 0;
+// while(wts.length) {
+//     console.log(wts.length)
+//     wts.shift();
+//     // problem: this changes the indexes
+//     if(wtsDictionary[t]) {
+//         // if the wts time exists in the dictionary, then we have a list of indexes. each index should be removed from the wts list.
+//         wtsDictionary[t].forEach(index => {
+//             wts.splice(index, 1);
+//         })
+//     }
+
+// }
+// for(let t = 0; t<wait.length; t++){
+//     // process this request
+//     console.log(wait.length)
+//     wait.shift();
+//     for(let i = 0; i<wait.length; i++){
+// check for any expired requests
+// console.log('checking if ', wait[i], ' should be removed')
+// if(wait[i] <= t+1) {
+//     wait.splice(i, 1);
+//     i--
+// console.log('should see this on third iteration, we just removed something: ', wait)
+//     }
+// }
+// t--
+// console.log('for first iteration, 2 should be kept: ', wait)
+//     }
+//     console.log(wait)
+// }
 // one way to solve this problem is to change the request to null and return the number of non-null elements in the array still
 
-fRIQ([2,2,3,1])
+/**
+ * 
+ * 1. make a priority queue? i haven't quite understood what to do with this
+ */
+const fRIQ = (waits) => {
+    
+}
+
+fRIQ([2, 2, 3, 1])
