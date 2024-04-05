@@ -8,5 +8,8 @@
     "emmet.showSuggestionsAsSnippets": true,
     "files.watcherExclude": {
         "**/target": true
-    }
+    },
+    "cSpell.words": [
+        "ADOBECODEBANC"
+    ]
 }
