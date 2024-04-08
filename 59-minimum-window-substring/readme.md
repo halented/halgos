@@ -49,5 +49,6 @@ substr.length is falsy. enter if #3
     i = 0, endPointer = 5, potentialMinWin = 'ADOBEC", result = ''. enter if #4
     -->
         result = "ADOBEC"
-A2:
+
+[iterations continue]
 
