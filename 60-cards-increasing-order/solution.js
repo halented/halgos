@@ -1,13 +1,5 @@
 const cardOrder = (arr) => {
-    const sorted = arr.slice().sort((a, b) => {
-        if (a > b) {
-            return 1;
-        }
-        if (a < b) {
-            return -1;
-        }
-        return 0;
-    })
+    const sorted = arr.slice().sort((a, b) => a - b)
 
     if (arr.length < 3) {
         return sorted;
@@ -26,15 +18,14 @@ const cardOrder = (arr) => {
         arrWithIndices.push(arrWithIndices.shift());
     }
 
-    // ordered is now [0,2,4,6,3,1,5]
     // now place each into solution using their correct index
     let solution = [];
     for (let i = 0; i < arr.length; i++) {
         let index = orderedIndices[i];
-        let elementToPlace = sorted[i];
-        solution[index] = elementToPlace;
+        solution[index] = sorted[i];
     }
     return solution;
 }
 
 cardOrder([17, 13, 11, 2, 3, 5, 7]);
+// solution => [2, 13, 3, 11, 5, 17, 7]
