@@ -12,8 +12,24 @@
  * @return {number[]}
  */
 var findFrequentTreeSum = function (root) {
-    console.log(root);
+    // 1. traverse all nodes and form the subtree sum for each node
+        // - the subtree includes the node we are on and *all nodes lower*
+    // god this needs to be recursive, huh
+    let copy = root
+    while(copy.left || copy.right) {
+        let sum = traverse(copy)
+        // add sum to structures
+        // remove root node
+        copy = copy.right;
+    }
 };
+
+const traverse = (root) => {
+    if(!root) {
+        return 0;
+    }
+    return root.val + traverse(root.left) + traverse(root.right);
+}
 
 /* creating test data below */
 function TreeNode(val, left, right) {
@@ -29,7 +45,8 @@ testTwo.left = new TreeNode(2);
 testTwo.right = new TreeNode(2);
 
 
-console.log(findFrequentTreeSum(testOne));
+// console.log(findFrequentTreeSum(testOne));
+console.log(traverse(testOne))
 
 /**
  * Some thoughts:
@@ -68,6 +85,12 @@ console.log(findFrequentTreeSum(testOne));
  * My solution should be: [2, 8]
  * So what I would want to do is check the top frequency then say hey, where FREQ === topFrequency
  * Maybe it is just an array of objects.
- * [{sum: 2, freq: 2}, {sum: 8, freq: 2}]
- * sorted by frequency. that doesn't really solve the problem of quickly retrieving all sums with top frequency, but it at least makes it easier to get to. 
+ * [{sum: 2, freq: 2}, {sum: 8, freq: 3}, {sum: 14, freq: 1}]
+ * sorted by frequency:
+ * arr.sort((a,b) => b.freq - a.freq);
+ * that doesn't really solve the problem of quickly retrieving all sums with top frequency, but it at least makes it easier to get to. 
+ * I actually think we work with two data structures: the array and an obj with just the sums as keys and the freqs as values like the above array would relate to the following obj:
+ * {2:2, 8:3, 14:1}
+ * and each time we add something into the obj, we know where to put it in the array because the array is *always sorted* -- every freq which is entered is sorted as it is placed. 
+ * okay let's try for some code.
  */
